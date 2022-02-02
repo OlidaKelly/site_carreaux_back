@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const about = await About.getOneById(id);
-    about ? res.json(about) : res.status(404).json({ message: "page à propos n'a pas été trouvé" });
+    about ? res.json(about) : res.status(404).json({ message: "La page n'a pas été trouvé" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -36,7 +36,7 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   const about = {
-    // id: req.body.id,
+    id: req.params.id,
     name: req.body.name,
     phone: req.body.phone,
     email: req.body.email,
