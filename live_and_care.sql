@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 03 fév. 2022 à 17:45
+-- Généré le : mar. 08 fév. 2022 à 08:56
 -- Version du serveur :  8.0.27-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.3
 
@@ -96,20 +96,6 @@ INSERT INTO `contact` (`id`, `firstname`, `lastname`, `email`, `message`, `seen`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `event`
---
-
-CREATE TABLE `event` (
-  `id` int NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `date` datetime NOT NULL,
-  `description` text NOT NULL,
-  `id_category` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `product`
 --
 
@@ -162,8 +148,8 @@ CREATE TABLE `social` (
 --
 
 INSERT INTO `social` (`id`, `name`, `url`, `icon`) VALUES
-(1, 'Linkedin', 'https://www.linkedin.com/in/cynthia-diefenbronn/?originalSubdomain=fr', '4'),
-(2, 'Instagram', 'https://www.instagram.com/cynthianutrition_naturo/', '2');
+(1, 'Linkedin', '', '4'),
+(2, 'Instagram', '', '2');
 
 -- --------------------------------------------------------
 
@@ -183,7 +169,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `is_admin`) VALUES
-(1, 'plop@plop.com', '$2b$10$92ZrSfrmHDcZzByxsFhUAujPswe6Ktp3Wbnep4WpQSLzy1BH5YYhu', 1);
+(1, 'liveandcare@plop.com', '$2b$10$92ZrSfrmHDcZzByxsFhUAujPswe6Ktp3Wbnep4WpQSLzy1BH5YYhu', 1);
 
 --
 -- Index pour les tables déchargées
@@ -206,13 +192,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `event`
---
-ALTER TABLE `event`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `event_category` (`id_category`);
 
 --
 -- Index pour la table `product`
@@ -256,12 +235,6 @@ ALTER TABLE `contact`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT pour la table `event`
---
-ALTER TABLE `event`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
@@ -282,12 +255,6 @@ ALTER TABLE `user`
 --
 -- Contraintes pour les tables déchargées
 --
-
---
--- Contraintes pour la table `event`
---
-ALTER TABLE `event`
-  ADD CONSTRAINT `event_category` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`);
 
 --
 -- Contraintes pour la table `product`
